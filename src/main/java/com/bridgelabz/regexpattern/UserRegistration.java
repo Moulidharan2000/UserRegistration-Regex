@@ -5,26 +5,22 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 	
-	public static void validate(String password) {
+public static void validate(String email) {
 		
-		String numberPattern = "^(?=.*[A-Z])(?=.*[a-z0-9])(?=[!@#$&%~]){8,20}$";
-		boolean pass = false;
-		pass = Pattern.matches(numberPattern, password);
-		if(password.length() >= 8) {
-			if(pass == true)
-				System.out.println("Password : "+password+"\nPassword is Valid");
-			else
-				System.out.println("Password is Invalid !!!");
-		}
+		String emailPattern = "^[a-z].[0-9]?.*[\\.\\+\\@\\-][a-z]?.*[a-z_\\.\\,]$";
+		boolean id = false;
+		id = Pattern.matches(emailPattern, email);
+		if(id == true)
+			System.out.println("Email ID : "+email+"\nEmail ID is Valid");
 		else
-			System.out.println("Password is Invalid !!!");
+			System.out.println("Email ID is Invalid Format !!!");
 	}
 
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter the Password : ");
-		String password = scan.next();
-		validate(password);
+		System.out.print("Enter the Email ID : ");
+		String email = scan.next();
+		validate(email);
 	}
 }
