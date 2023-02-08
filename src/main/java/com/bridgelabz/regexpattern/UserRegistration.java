@@ -5,22 +5,24 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 	
-	public static void validate(CharSequence number) {
+	public static void validate(String password) {
 		
-		String numberPattern = "^(91)?[8-9]{1}[0-9]{9}$";
-		boolean ph = false;
-		ph = Pattern.matches(numberPattern, number);
-		if(ph == true)
-			System.out.println("Phone Number : "+number+"\nPhone Number is Valid");
+		String numberPattern = "^[a-z]{8,}$";
+		boolean pass = false;
+		pass = Pattern.matches(numberPattern, password);
+		if(password.length() >= 8) {
+			if(pass == true)
+				System.out.println("Password : "+password+"\nPassword is Valid");
+		}
 		else
-			System.out.println("Phone Number is Invalid !!!");
+			System.out.println("Password is Invalid !!!");
 	}
 
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter the Phone Number : ");
-		CharSequence number = scan.next();
-		validate(number);
+		System.out.print("Enter the Password : ");
+		String password = scan.next();
+		validate(password);
 	}
 }
