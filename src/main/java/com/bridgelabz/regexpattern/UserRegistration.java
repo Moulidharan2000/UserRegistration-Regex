@@ -5,24 +5,22 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 	
-	public static void validate(String lastName) {
+	public static void validate(String email) {
 		
-		String namePattern = "^[A-Z][a-z]{1,}$";
-		boolean name = false;
-		if(lastName.length() > 3) {
-			name =Pattern.matches(namePattern, lastName);
-			if(name == true)
-				System.out.println("Last Name : "+lastName+"\nLast Name is Valid");
-			else
-				System.out.println("Last Name is Invalid !!!");
-		}
+		String emailPattern = "^[a-z0-9_\\.]+[@][a-z]+[\\.][a-z]{2,3}$";
+		boolean id = false;
+		id = Pattern.matches(emailPattern, email);
+		if(id == true)
+			System.out.println("Email ID : "+email+"\nEmail ID is Valid");
+		else
+			System.out.println("Email ID is Invalid Format !!!");
 	}
 
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter the Last Name : ");
-		String lastName = scan.next();
-		validate(lastName);
+		System.out.print("Enter the Email ID : ");
+		String email = scan.next();
+		validate(email);
 	}
 }
