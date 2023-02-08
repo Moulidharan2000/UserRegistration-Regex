@@ -7,12 +7,14 @@ public class UserRegistration {
 	
 	public static void validate(String password) {
 		
-		String numberPattern = "^[a-z]{8,}$";
+		String numberPattern = "^[A-Z]{1}[a-z]{8,}$";
 		boolean pass = false;
 		pass = Pattern.matches(numberPattern, password);
 		if(password.length() >= 8) {
 			if(pass == true)
 				System.out.println("Password : "+password+"\nPassword is Valid");
+			else
+				System.out.println("Password is Invalid !!!");
 		}
 		else
 			System.out.println("Password is Invalid !!!");
