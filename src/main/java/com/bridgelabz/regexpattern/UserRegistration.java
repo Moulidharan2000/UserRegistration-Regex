@@ -7,7 +7,7 @@ public class UserRegistration {
 	
 	public static void validate(String password) {
 		
-		String numberPattern = "^[A-Z]{1}[a-z]{8,}$";
+		String numberPattern = "^[A-Z]{1}[a-z0-9]{7,}$";
 		boolean pass = false;
 		pass = Pattern.matches(numberPattern, password);
 		if(password.length() >= 8) {
