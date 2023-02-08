@@ -5,22 +5,22 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 	
-	public static void validate(String email) {
+	public static void validate(CharSequence number) {
 		
-		String emailPattern = "^[a-z0-9_\\.]+[@][a-z]+[\\.][a-z]{2,3}$";
-		boolean id = false;
-		id = Pattern.matches(emailPattern, email);
-		if(id == true)
-			System.out.println("Email ID : "+email+"\nEmail ID is Valid");
+		String numberPattern = "^(91)?[8-9]{1}[0-9]{9}$";
+		boolean ph = false;
+		ph = Pattern.matches(numberPattern, number);
+		if(ph == true)
+			System.out.println("Phone Number : "+number+"\nPhone Number is Valid");
 		else
-			System.out.println("Email ID is Invalid Format !!!");
+			System.out.println("Phone Number is Invalid !!!");
 	}
 
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter the Email ID : ");
-		String email = scan.next();
-		validate(email);
+		System.out.print("Enter the Phone Number : ");
+		CharSequence number = scan.next();
+		validate(number);
 	}
 }
