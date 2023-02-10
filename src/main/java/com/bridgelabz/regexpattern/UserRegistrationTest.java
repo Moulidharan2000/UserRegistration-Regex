@@ -1,50 +1,45 @@
 package com.bridgelabz.regexpattern;
 
-import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Assert;
-
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+@RunWith(Parameterized.class)
 public class UserRegistrationTest {
-
-	Scanner scan = new Scanner(System.in);
+	
+	String email;
+	String emailPattern;
+	boolean result;
 	UserRegistration ur = new UserRegistration();
+	
+	public UserRegistrationTest(String email, String emailPattern, boolean result) {
+		
+		super();
+		this.email = email;
+		this.emailPattern = emailPattern;
+		this.result = result;
+	}
 	
 	@Test
 	public void FirstNameTest() {
 		
-		
-		System.out.print("Enter the First Name : ");
-		Assert.assertEquals(true, ur.FirstName(scan.next(),"^[A-Z][a-z]{1,}$"));
+		Assert.assertEquals(result, ur.Patterns(email,emailPattern));
 	}
 	
-	@Test
-	public void LastNameTest() {
+	@Parameterized.Parameters
+	public static Collection<Object[]> inputs() {
 		
-		System.out.print("Enter the Last Name : ");
-		Assert.assertEquals(true, ur.LastName(scan.next(),"^[A-Z][a-z]{1,}$"));
-	}
-	
-	@Test
-	public void EmailTest() {
-		
-		System.out.print("Enter the Email ID : ");
-		Assert.assertEquals(true, ur.Email(scan.next(),"^[a-z].[0-9]?.*[\\.\\+\\@\\-][a-z]?.*[a-z_\\.\\,]$"));
-	}
-	
-	@Test
-	public void PhoneNumberTest() {
-		
-		System.out.print("Enetr the Phone Number : ");
-		Assert.assertEquals(true, ur.PhoneNumber(scan.next(),"^(91)?[8-9]{1}[0-9]{9}$"));
-	}
-	
-	@Test
-	public void PasswordTest() {
-		
-		System.out.print("Enetr the Password : ");
-		Assert.assertEquals(true, ur.Password(scan.next(),"^(?=.*[A-Z])(?=.*[a-z0-9])(?=[!@#$&%~]){8,20}$"));
+		return Arrays.asList(new Object[][] {
+			{"abc@yahoo.com,","^[a-z].[0-9]?.*[\\.\\+\\@\\-][a-z]?.*[a-z_\\.\\,]$", true},
+			{"abc-100@yahoo.com,","^[a-z].[0-9]?.*[\\.\\+\\@\\-][a-z]?.*[a-z_\\.\\,]$", true},
+			{"abc.100@yahoo.com","^[a-z].[0-9]?.*[\\.\\+\\@\\-][a-z]?.*[a-z_\\.\\,]$", true},
+			{"abc111@abc.com,","^[a-z].[0-9]?.*[\\.\\+\\@\\-][a-z]?.*[a-z_\\.\\,]$", true},
+			{"abc-100@abc.net,","^[a-z].[0-9]?.*[\\.\\+\\@\\-][a-z]?.*[a-z_\\.\\,]$", true},
+		});
 	}
 }
 
